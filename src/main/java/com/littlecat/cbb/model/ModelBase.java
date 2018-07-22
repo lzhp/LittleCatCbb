@@ -1,5 +1,6 @@
 package com.littlecat.cbb.model;
 
+//Model基类
 public class ModelBase
 {
 	private String uuid;
