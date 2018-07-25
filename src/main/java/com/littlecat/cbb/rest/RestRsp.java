@@ -11,8 +11,10 @@ import java.util.List;
  */
 public class RestRsp<T>
 {
+	private static final int INVALID_TOTALNUM = -1;
 	private String code;
 	private String message;
+	private int totalNum = INVALID_TOTALNUM; //分页查询时关注此字段，为总记录数（不是当前返回这批数据的记录数）
 	private List<T> data = new ArrayList<T>();
 	
 	public String getCode()
@@ -30,6 +32,14 @@ public class RestRsp<T>
 	public void setMessage(String message)
 	{
 		this.message = message;
+	}
+	public int getTotalNum()
+	{
+		return totalNum;
+	}
+	public void setTotalNum(int totalNum)
+	{
+		this.totalNum = totalNum;
 	}
 	public List<T> getData()
 	{
