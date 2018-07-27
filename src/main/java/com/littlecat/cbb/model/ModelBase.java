@@ -10,6 +10,7 @@ public class ModelBase
 	private String uuid;
 	private long createTime;
 	private long updateTime;
+	private String enable;
 
 	public String getUuid()
 	{
@@ -40,4 +41,15 @@ public class ModelBase
 	{
 		this.updateTime = updateTime;
 	}
+
+	public String getEnable()
+	{
+		return enable;
+	}
+
+	public void setEnable(String enable)
+	{
+		this.enable = enable;
+	}
+	
 }

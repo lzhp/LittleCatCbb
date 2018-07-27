@@ -5,7 +5,7 @@ package com.littlecat.cbb.model;
  * amydady
  *
  */
-public class AddressInfo
+public class AddressInfoMO extends ModelBase
 {
 	private int country;
 	private int province;
