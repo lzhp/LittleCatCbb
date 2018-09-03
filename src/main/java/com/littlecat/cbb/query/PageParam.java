@@ -1,4 +1,4 @@
-package com.littlecat.cbb.rest;
+package com.littlecat.cbb.query;
 
 /**
  * 分页查询参数 amydady
@@ -7,10 +7,13 @@ package com.littlecat.cbb.rest;
 public class PageParam
 {
 	public static final int DEFAULT_PAGESIZE = 200;
+	public static final String SORT_TYPE_ASC = "asc";
+	public static final String SORT_TYPE_DESC = "desc";
 
 	private int pageSize = DEFAULT_PAGESIZE;
 	private int pageIndex = 0;
 	private String sortFields; // 排序字段，以逗号分隔
+	private String sortType = SORT_TYPE_ASC; // 排序方式，默认升序
 
 	public int getPageSize()
 	{
@@ -41,4 +44,15 @@ public class PageParam
 	{
 		this.sortFields = sortFields;
 	}
+
+	public String getSortType()
+	{
+		return sortType;
+	}
+
+	public void setSortType(String sortType)
+	{
+		this.sortType = sortType;
+	}
+	
 }
