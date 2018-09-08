@@ -1,5 +1,7 @@
 package com.littlecat.cbb.rest;
 
+import com.littlecat.cbb.common.Consts;
+
 /**
  * Rest接口返回Model
  * amydady
@@ -8,7 +10,7 @@ package com.littlecat.cbb.rest;
  */
 public class RestSimpleRsp
 {
-	private String code;
+	private String code = Consts.NONE_ERROR_CODE;
 	private String message;
 	
 	public String getCode()

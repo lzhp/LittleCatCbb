@@ -3,6 +3,8 @@ package com.littlecat.cbb.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.littlecat.cbb.common.Consts;
+
 /**
  * Rest接口返回Model
  * amydady
@@ -13,7 +15,7 @@ public class RestRsp<T>
 {
 	private static final int INVALID_TOTALNUM = -1;
 	
-	private String code;
+	private String code = Consts.NONE_ERROR_CODE;
 	private String message;
 	private int totalNum = INVALID_TOTALNUM; 
 	private List<T> data = new ArrayList<T>();

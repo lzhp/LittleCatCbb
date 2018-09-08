@@ -1,4 +1,4 @@
-package com.littlecat.cbb.base;
+package com.littlecat.cbb.common;
 
 import com.littlecat.cbb.utils.UUIDUtil;
 
