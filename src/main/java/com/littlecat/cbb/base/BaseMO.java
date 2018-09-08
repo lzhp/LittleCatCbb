@@ -4,18 +4,19 @@ import com.littlecat.cbb.utils.UUIDUtil;
 
 /**
  * MO基类
- * amydady
+ * 
+ * @author amydady
  *
  */
 public class BaseMO
-{//test commit and push
+{
 	private String id;
-	
+
 	public BaseMO()
 	{
 		this.id = UUIDUtil.createUUID();
 	}
-	
+
 	public String getId()
 	{
 		return id;
