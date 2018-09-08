@@ -8,7 +8,7 @@ import com.littlecat.cbb.utils.UUIDUtil;
  *
  */
 public class BaseMO
-{
+{//test commit and push
 	private String id;
 	
 	public BaseMO()
