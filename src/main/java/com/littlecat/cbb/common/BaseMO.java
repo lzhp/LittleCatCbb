@@ -1,7 +1,5 @@
 package com.littlecat.cbb.common;
 
-import com.littlecat.cbb.utils.UUIDUtil;
-
 /**
  * MO基类
  * 
@@ -14,7 +12,6 @@ public class BaseMO
 
 	public BaseMO()
 	{
-		this.id = UUIDUtil.createUUID();
 	}
 
 	public String getId()
