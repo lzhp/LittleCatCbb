@@ -34,35 +34,29 @@ public class QueryParam
 	
 	public String getConditionString()
 	{
-		if(condition == null)
+		if(condition == null || CollectionUtils.isEmpty(condition.getCondItems()))
 		{
-			return null;
+			return "";
 		}
 		
-		if(CollectionUtils.isEmpty(condition.getCondItems()))
-		{
-			return null;
-		}
+		StringBuilder sb = new StringBuilder("where 1 = 1 ");
 		
-		StringBuilder sb = new StringBuilder();
 		for (ConditionItem condItem : condition.getCondItems())
 		{
-			if(StringUtil.isEmpty(condItem.getFieldName()))
+			String condItemString = condItem.getConditionString();
+			if(StringUtil.isEmpty(condItemString))
 			{
 				continue;
 			}
-			switch (condItem.getOpType())
-			{
-			case euql:
-				
-				break;
-			default:
-				break;
-			}
+			
+			sb.append(this.condition.getLogicType().name()).append(" ").append(condItemString).append(" ");
 		}
 		
-		return null;
+		if(this.pageParam != null)
+		{
+			sb.append(this.pageParam.getPageString());
+		}
+
+		return sb.toString();
 	}
-	
-	
 }

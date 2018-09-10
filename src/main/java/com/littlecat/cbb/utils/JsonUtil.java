@@ -9,6 +9,15 @@ import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.codehaus.jackson.type.TypeReference;
 
+import com.littlecat.cbb.common.Consts;
+import com.littlecat.cbb.exception.LittleCatException;
+
+/**
+ * Json工具类
+ * 
+ * @author amydady
+ *
+ */
 public final class JsonUtil
 {
 	private static ObjectMapper objectMapper = new ObjectMapper();
@@ -45,19 +54,19 @@ public final class JsonUtil
 		try
 		{
 			return obj instanceof String ? (String) obj : objectMapper.writeValueAsString(obj);
-		} 
+		}
 		catch (Exception e)
 		{
-			return null;
+			throw new LittleCatException(Consts.ERROR_CODE_TO_JSON_ERROR,Consts.ERROR_CODE_TO_JSON_ERROR,e);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T fromJson(String str, Class<T> clazz)
+	public static <T> T fromJson(String str, Class<T> clazz) throws LittleCatException
 	{
 		if (StringUtil.isEmpty(str))
 		{
-			return null;
+			throw new LittleCatException(Consts.ERROR_CODE_FROM_JSON_ERROR,Consts.ERROR_CODE_FROM_JSON_ERROR);
 		}
 
 		try
@@ -66,16 +75,16 @@ public final class JsonUtil
 		} 
 		catch (IOException e)
 		{
-			return null;
+			throw new LittleCatException(Consts.ERROR_CODE_FROM_JSON_ERROR,Consts.ERROR_CODE_FROM_JSON_ERROR,e);
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	public static <T> T fromJson(String str, TypeReference<T> typeReference)
+	public static <T> T fromJson(String str, TypeReference<T> typeReference) throws LittleCatException
 	{
 		if (StringUtil.isEmpty(str) || typeReference == null)
 		{
-			return null;
+			throw new LittleCatException(Consts.ERROR_CODE_FROM_JSON_ERROR,Consts.ERROR_CODE_FROM_JSON_ERROR);
 		}
 		
 		try
@@ -84,7 +93,7 @@ public final class JsonUtil
 		} 
 		catch (IOException e)
 		{
-			return null;
+			throw new LittleCatException(Consts.ERROR_CODE_FROM_JSON_ERROR,Consts.ERROR_CODE_FROM_JSON_ERROR,e);
 		}
 	}
 }

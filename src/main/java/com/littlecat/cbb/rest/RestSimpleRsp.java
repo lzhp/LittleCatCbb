@@ -10,7 +10,7 @@ import com.littlecat.cbb.common.Consts;
  */
 public class RestSimpleRsp
 {
-	private String code = Consts.NONE_ERROR_CODE;
+	private String code = Consts.ERROR_CODE_NONE;
 	private String message;
 	
 	public String getCode()
