@@ -6,6 +6,7 @@ import java.util.List;
 import org.codehaus.jackson.type.TypeReference;
 import org.junit.Test;
 
+import com.littlecat.cbb.query.ConditionOperatorType;
 import com.littlecat.cbb.test.model.SubModel;
 import com.littlecat.cbb.test.model.TestModel;
 import com.littlecat.cbb.utils.JsonUtil;
@@ -19,6 +20,8 @@ public class JsonUtilTest
 		testModel.setIntValue(100);
 		testModel.setStrValue("haha");
 		testModel.setLongVlaue(1000L);
+		testModel.setOperatorType(ConditionOperatorType.endwith);
+		
 		testModel.getIntList().add(1);
 		testModel.getIntList().add(2);
 		testModel.getIntList().add(3);
@@ -35,11 +38,11 @@ public class JsonUtilTest
 		String json = JsonUtil.toJson(testModel);
 		System.out.println(json);
 	}
-	
+
 	@Test
 	public void testFromJsonToObject()
 	{
-		String json = "{\"strValue\":\"haha\",\"intValue\":100,\"longVlaue\":1000,\"intList\":[1,2,3],\"subModel\":{\"strValue\":\"hoho\",\"intValue\":200},\"subModelList\":[{\"strValue\":\"hoho\",\"intValue\":200},{\"strValue\":\"hoho\",\"intValue\":200}]}";
+		String json = "{\"strValue\":\"haha\",\"intValue\":100,\"longVlaue\":1000,\"operatorType\":\"equal\",\"intList\":[1,2,3],\"subModel\":{\"strValue\":\"hoho\",\"intValue\":200},\"subModelList\":[{\"strValue\":\"hoho\",\"intValue\":200},{\"strValue\":\"hoho\",\"intValue\":200}]}";
 		TestModel model = JsonUtil.fromJson(json, TestModel.class);
 		System.out.println(JsonUtil.toJson(model));
 	}

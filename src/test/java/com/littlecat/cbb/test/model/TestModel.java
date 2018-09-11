@@ -3,11 +3,14 @@ package com.littlecat.cbb.test.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.littlecat.cbb.query.ConditionOperatorType;
+
 public class TestModel
 {
 	private String strValue;
 	private int intValue;
 	private long longVlaue;
+	private ConditionOperatorType operatorType;
 	
 	private List<Integer> intList = new ArrayList<Integer>();
 	
@@ -72,6 +75,16 @@ public class TestModel
 	public void setSubModelList(List<SubModel> subModelList)
 	{
 		this.subModelList = subModelList;
+	}
+
+	public ConditionOperatorType getOperatorType()
+	{
+		return operatorType;
+	}
+
+	public void setOperatorType(ConditionOperatorType operatorType)
+	{
+		this.operatorType = operatorType;
 	}
 	
 	

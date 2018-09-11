@@ -61,7 +61,7 @@ public class ConditionItem
 		StringBuilder sb = new StringBuilder();
 		switch (getOpType())
 		{
-			case euql:
+			case equal:
 				sb.append(this.getFieldName()).append(" = '").append(this.getValue()).append("'");
 				break;
 			case like:
