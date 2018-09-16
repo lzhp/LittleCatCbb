@@ -84,7 +84,7 @@ public class QueryParam
 			return "";
 		}
 
-		StringBuilder sb = new StringBuilder("where 1 = 1 ");
+		StringBuilder sb = new StringBuilder(" where 1 = 1 ");
 
 		for (ConditionItem condItem : condition.getCondItems())
 		{
