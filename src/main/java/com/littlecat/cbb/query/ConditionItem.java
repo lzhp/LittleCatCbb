@@ -8,6 +8,14 @@ public class ConditionItem
 	private String value;
 	private ConditionOperatorType opType;
 	
+	public ConditionItem(String fieldName, String value, ConditionOperatorType opType)
+	{
+		super();
+		this.fieldName = fieldName;
+		this.value = value;
+		this.opType = opType;
+	}
+	
 	public String getFieldName()
 	{
 		return fieldName;
