@@ -107,7 +107,7 @@ public class QueryParam
 			return "";
 		}
 		
-		return sortFields + this.sortType;
+		return " order by " + sortFields + " "+ this.sortType;
 	}
 
 	private String getPageString()

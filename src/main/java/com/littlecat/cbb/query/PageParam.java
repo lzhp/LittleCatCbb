@@ -37,7 +37,7 @@ public class PageParam
 	
 	public String getPageString()
 	{
-		int start = (this.pageIndex - 1) * this.pageSize + 1;
+		int start = (this.pageIndex - 1) * this.pageSize;
 		return new StringBuilder().append(" limit ").append(String.valueOf(start)).append(",").append(String.valueOf(this.getPageSize())).toString();
 	}
 }
