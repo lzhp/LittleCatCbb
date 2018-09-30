@@ -1,5 +1,6 @@
 package com.littlecat.cbb.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -54,19 +55,21 @@ public final class DateTimeUtil
 		return (int) (dayEnd - dayStart) / (1000 * 3600 * 24);
 	}
 
-//	public static void main(String[] args)
-//	{
-//		 Date date = new Date();
-//		
-//		 System.out.println(date.getTime());
-//		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
-//		 System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
-//		
-//		 System.out.println(getCurrentTimeForDisplay());
-//		 System.out.println(getYear(date.getTime()));
-//		 System.out.println(getMonth(date.getTime()));
-//		 System.out.println(getDay(date.getTime()));
-//
-//		System.out.println(getDurationDays(new Date().getTime(), new Date().getTime() + 1000 * 3600 * 24 * 3 + 1000 * 3600 ));
-//	}
+	public static void main(String[] args) throws ParseException
+	{
+		 Date date = new Date();
+		
+		 System.out.println(date.getTime());
+		 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
+		 System.out.println(df.format(new Date()));// new Date()为获取当前系统时间
+		
+		 System.out.println(getCurrentTimeForDisplay());
+		 System.out.println(getYear(date.getTime()));
+		 System.out.println(getMonth(date.getTime()));
+		 System.out.println(getDay(date.getTime()));
+
+		System.out.println(getDurationDays(new Date().getTime(), new Date().getTime() + 1000 * 3600 * 24 * 3 + 1000 * 3600 ));
+		System.out.println(getCurrentTime());
+		System.out.println(df.format(df.parse("2018-09-30 16:48:09.0")));
+	}
 }
