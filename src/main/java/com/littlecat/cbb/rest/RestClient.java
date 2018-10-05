@@ -4,10 +4,10 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import com.littlecat.cbb.exception.LittleCatException;
+import com.littlecat.cbb.utils.CollectionUtil;
 import com.littlecat.cbb.utils.JsonUtil;
 
 public class RestClient
@@ -18,22 +18,9 @@ public class RestClient
 		return restTemplate;
 	}
 
-	public static String get(String url,RestfulRequestParam ... reqParam) throws LittleCatException
+	public static String get(String url) throws LittleCatException
 	{
-		RestTemplate restTemplate = getRestTemplateIns();
-		try
-		{
-			if(reqParam != null && reqParam.getReqParam())
-			{
-				
-			}
-			String respJson = restTemplate.getForObject(url, String.class);
-			return respJson;
-		}
-		catch (Exception e)
-		{
-			throw new LittleCatException("RestClient:get error,url=" + url, e);
-		}
+		return get(url, null);
 	}
 
 	public static String get(String url, RestfulRequestParam reqParam) throws LittleCatException
@@ -41,13 +28,23 @@ public class RestClient
 		RestTemplate restTemplate = getRestTemplateIns();
 		try
 		{
-			String respJson = restTemplate.getForObject(url, String.class, reqParam.getReqParam());
-			return respJson;
+			if (reqParam != null && CollectionUtil.isNotEmpty(reqParam.getReqParam()))
+			{
+				return restTemplate.getForObject(url, String.class, reqParam.getReqParam());
+			}
+
+			return restTemplate.getForObject(url, String.class);
+
 		}
 		catch (Exception e)
 		{
-			throw new LittleCatException("RestClient:get error,url=" + url + ",param:" + JsonUtil.toJson(reqParam), e);
+			throw new LittleCatException("RestClient:get error,url=" + url + ",param:" + String.valueOf(JsonUtil.toJson(reqParam)), e);
 		}
+	}
+
+	public static String put(String url, String reqObjectJson) throws LittleCatException
+	{
+		return put(url, null);
 	}
 
 	public static String put(String url, String reqObjectJson, RestfulRequestParam reqParam) throws LittleCatException
@@ -59,52 +56,72 @@ public class RestClient
 
 		try
 		{
-			ResponseEntity<String> resp = restTemplate.exchange(url, HttpMethod.PUT, entity, String.class, reqParam.getReqParam());
-			return resp.getBody();
+			if (reqParam != null && CollectionUtil.isNotEmpty(reqParam.getReqParam()))
+			{
+				return restTemplate.exchange(url, HttpMethod.PUT, entity, String.class, reqParam.getReqParam()).getBody();
+			}
+			
+			return restTemplate.exchange(url, HttpMethod.PUT, entity, String.class).getBody();
 		}
 		catch (Exception e)
 		{
-			throw new LittleCatException("RestClient:put error,url=" + url + ",reqObjectJson:" + reqObjectJson, e);
+			throw new LittleCatException("RestClient:put error,url=" + url + ",reqObjectJson:" + reqObjectJson + ",param:" + String.valueOf(JsonUtil.toJson(reqParam)), e);
 		}
+	}
+
+	public static String delete(String url, String reqObjectJson) throws LittleCatException
+	{
+		return delete(url, null);
 	}
 
 	public static String delete(String url, String reqObjectJson, RestfulRequestParam reqParam) throws LittleCatException
 	{
 		RestTemplate restTemplate = getRestTemplateIns();
-
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-
 		HttpEntity<String> entity = new HttpEntity<String>(reqObjectJson, headers);
 
 		try
 		{
-			ResponseEntity<String> resp = restTemplate.exchange(url, HttpMethod.DELETE, entity, String.class, reqParam.getReqParam());
-			return resp.getBody();
+			if (reqParam != null && CollectionUtil.isNotEmpty(reqParam.getReqParam()))
+			{
+				return restTemplate.exchange(url, HttpMethod.DELETE, entity, String.class, reqParam.getReqParam()).getBody();
+			}
+			
+			return restTemplate.exchange(url, HttpMethod.DELETE, entity, String.class).getBody();
+
 		}
 		catch (Exception e)
 		{
-			throw new LittleCatException("RestClient:post error,url=" + url + ",reqObjectJson:" + reqObjectJson, e);
+			throw new LittleCatException("RestClient:delete error,url=" + url + ",reqObjectJson:" + reqObjectJson + ",param:" + String.valueOf(JsonUtil.toJson(reqParam)), e);
 		}
 	}
 
 	public static String post(String url, String reqObjectJson) throws LittleCatException
 	{
-		RestTemplate restTemplate = getRestTemplateIns();
+		return post(url, null);
+	}
 
+	public static String post(String url, String reqObjectJson, RestfulRequestParam reqParam) throws LittleCatException
+	{
+		RestTemplate restTemplate = getRestTemplateIns();
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-
 		HttpEntity<String> entity = new HttpEntity<String>(reqObjectJson, headers);
 
 		try
 		{
-			ResponseEntity<String> resp = restTemplate.exchange(url, HttpMethod.POST, entity, String.class);
-			return resp.getBody();
+			if (reqParam != null && CollectionUtil.isNotEmpty(reqParam.getReqParam()))
+			{
+				return restTemplate.exchange(url, HttpMethod.POST, entity, String.class, reqParam.getReqParam()).getBody();
+			}
+			
+			return restTemplate.exchange(url, HttpMethod.POST, entity, String.class).getBody();
+
 		}
 		catch (Exception e)
 		{
-			throw new LittleCatException("RestClient:post error,url=" + url + ",reqObjectJson:" + reqObjectJson, e);
+			throw new LittleCatException("RestClient:post error,url=" + url + ",reqObjectJson:" + reqObjectJson + ",param:" + String.valueOf(JsonUtil.toJson(reqParam)), e);
 		}
 	}
 
