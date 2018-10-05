@@ -10,8 +10,13 @@ import com.littlecat.cbb.exception.LittleCatException;
 import com.littlecat.cbb.utils.CollectionUtil;
 import com.littlecat.cbb.utils.JsonUtil;
 
-public class RestClient
+public final class RestClient
 {
+	private RestClient()
+	{
+		
+	}
+	
 	private static RestTemplate getRestTemplateIns()
 	{
 		RestTemplate restTemplate = new RestTemplate();

@@ -9,6 +9,14 @@ public final class Consts
 	public static final String ERROR_CODE_PARSE_DATE_ERROR = "PARSE_DATE_ERROR";
 
 	public static final String COMMON_DB_RESULT_FIELDS_TOTALNUM = "TotalNum";
+	
+	
+	// 圈子成员有效期（天）
+	public static String PARAM_NAME_MEMBER_ENABLE_DAYS = "member_enable_days";
+
+	// 秒杀计划后台按秒杀时间窗口定时处理失效标记的周期（秒）
+	public static String PARAM_NAME_SECKILLPLAN_ENABLETAG_PROCESS_CYC = "seckillplan_enabletag_process_cyc";
+	
 
 	private Consts()
 	{
