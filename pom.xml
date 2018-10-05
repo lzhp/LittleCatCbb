@@ -6,13 +6,12 @@
 	<artifactId>LittleCatCbb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>LittleCatCbb</name>
-	
+
 	<dependencies>
 		<dependency>
-			<groupId>org.jmockit</groupId>
-			<artifactId>jmockit</artifactId>
-			<version>1.30</version>
-			<scope>test</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>5.1.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
