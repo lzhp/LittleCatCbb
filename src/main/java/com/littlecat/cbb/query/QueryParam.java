@@ -5,7 +5,9 @@ import org.apache.commons.collections.CollectionUtils;
 import com.littlecat.cbb.utils.StringUtil;
 
 /**
- * Rest接口查询参数 amydady
+ * Rest接口查询参数
+ * 
+ * @author amydady
  *
  */
 public class QueryParam
@@ -57,9 +59,10 @@ public class QueryParam
 	{
 		this.sortType = sortType;
 	}
-	
+
 	/**
 	 * 是否需要分页查询
+	 * 
 	 * @return
 	 */
 	public boolean needPage()
@@ -96,29 +99,28 @@ public class QueryParam
 
 			sb.append(this.condition.getLogicType().name()).append(" ").append(condItemString).append(" ");
 		}
-		
+
 		return sb.toString();
 	}
 
 	private String getOrderString()
 	{
-		if(StringUtil.isEmpty(sortFields))
+		if (StringUtil.isEmpty(sortFields))
 		{
 			return "";
 		}
-		
-		return " order by " + sortFields + " "+ this.sortType;
+
+		return " order by " + sortFields + " " + this.sortType;
 	}
 
 	private String getPageString()
 	{
-		if(pageParam == null)
+		if (pageParam == null)
 		{
 			return "";
 		}
-		
+
 		return this.pageParam.getPageString();
 	}
-	
-	
+
 }
