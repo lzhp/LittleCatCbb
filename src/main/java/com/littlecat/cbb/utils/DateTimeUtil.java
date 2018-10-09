@@ -36,6 +36,11 @@ public final class DateTimeUtil
 	{
 		return df.format(date);
 	}
+	
+	public static String getTimeForDisplay(long date, SimpleDateFormat df)
+	{
+		return df.format(new Date(date));
+	}
 
 	public static int getYear(long dateValue)
 	{
@@ -54,9 +59,9 @@ public final class DateTimeUtil
 
 	public static int getDurationDays(long dateValueStart, long dateValueEnd)
 	{
-		long dayStart = dateValueStart - dateValueStart % (1000 * 3600 * 24);
-		long dayEnd = dateValueEnd - dateValueEnd % (1000 * 3600 * 24);
-		return (int) ((dayEnd - dayStart) / (1000 * 3600 * 24));
+		long dayStart = dateValueStart / (1000 * 3600 * 24);
+		long dayEnd = dateValueEnd / (1000 * 3600 * 24);
+		return (int) (dayEnd - dayStart);
 	}
 
 	/**
@@ -112,7 +117,7 @@ public final class DateTimeUtil
 		System.out.println(getCurrentTime());
 		System.out.println(df.format(df.parse("2018-09-30 16:48:09.0")));
 
-		System.out.println(getDurationDays("2017-01-30 16:48:09", "2018-10-2 16:48:09"));
+		System.out.println(getDurationDays("2018-11-01 16:48:09", "2018-10-2 16:48:09"));
 
 	}
 }
