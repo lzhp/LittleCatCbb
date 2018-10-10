@@ -14,9 +14,6 @@ public final class Consts
 	// 圈子成员有效期（天）
 	public static String PARAM_NAME_MEMBER_ENABLE_DAYS = "member_enable_days";
 
-	// 秒杀计划后台按秒杀时间窗口定时处理失效标记的周期（秒）
-	public static String PARAM_NAME_SECKILLPLAN_ENABLETAG_PROCESS_CYC = "seckillplan_enabletag_process_cyc";
-	
 	//资源锁定时清理周期（秒）
 	public static String PARAM_NAME_CLEAR_RESLOCK_PROCESS_CYC = "clear_reslock_process_cyc";
 
