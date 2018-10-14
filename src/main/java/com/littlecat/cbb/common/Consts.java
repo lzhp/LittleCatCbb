@@ -16,6 +16,9 @@ public final class Consts
 	public static final String COMMON_DB_RESULT_FIELDS_TOTALNUM = "TotalNum";
 	
 	
+	public static final String CHARSET_NAME = "utf-8";
+	
+	
 	
 	
 	
