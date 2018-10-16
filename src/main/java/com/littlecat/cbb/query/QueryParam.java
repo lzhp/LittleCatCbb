@@ -80,6 +80,16 @@ public class QueryParam
 		return new StringBuilder().append(getWhereString()).append(getOrderString()).append(getPageString()).toString();
 	}
 
+	/**
+	 * 不包含where关键字
+	 * 
+	 * @return
+	 */
+	public String getQueryDataConditionStringWithNoWhereKeyWords()
+	{
+		return new StringBuilder().append(getWhereStringWithNoWhereKeyWords()).append(getOrderString()).append(getPageString()).toString();
+	}
+
 	private String getWhereString()
 	{
 		if (condition == null || CollectionUtils.isEmpty(condition.getCondItems()))
@@ -88,6 +98,29 @@ public class QueryParam
 		}
 
 		StringBuilder sb = new StringBuilder(" where 1 = 1 ");
+
+		for (ConditionItem condItem : condition.getCondItems())
+		{
+			String condItemString = condItem.getConditionString();
+			if (StringUtil.isEmpty(condItemString))
+			{
+				continue;
+			}
+
+			sb.append(this.condition.getLogicType().name()).append(" ").append(condItemString).append(" ");
+		}
+
+		return sb.toString();
+	}
+	
+	private String getWhereStringWithNoWhereKeyWords()
+	{
+		if (condition == null || CollectionUtils.isEmpty(condition.getCondItems()))
+		{
+			return "";
+		}
+
+		StringBuilder sb = new StringBuilder(" ");
 
 		for (ConditionItem condItem : condition.getCondItems())
 		{
