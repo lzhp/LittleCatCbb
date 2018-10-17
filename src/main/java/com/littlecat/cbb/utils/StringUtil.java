@@ -37,4 +37,9 @@ public final class StringUtil
 		
 		return Arrays.asList(StringUtils.split(str, splitChar));
 	}
+	
+	public static String replace(String src,String oldStr,String newStr)
+	{
+		return StringUtils.replace(src, oldStr, newStr);
+	}
 }
