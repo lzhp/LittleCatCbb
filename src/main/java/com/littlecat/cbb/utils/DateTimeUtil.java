@@ -36,10 +36,20 @@ public final class DateTimeUtil
 	{
 		return df.format(date);
 	}
-	
+
+	public static String getTimeForDisplay(Date date)
+	{
+		return defaultDateFormat.format(date);
+	}
+
 	public static String getTimeForDisplay(long date, SimpleDateFormat df)
 	{
 		return df.format(new Date(date));
+	}
+
+	public static String getTimeForDisplay(long date)
+	{
+		return defaultDateFormat.format(new Date(date));
 	}
 
 	public static int getYear(long dateValue)
