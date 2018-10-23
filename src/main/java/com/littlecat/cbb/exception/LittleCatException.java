@@ -1,9 +1,11 @@
 package com.littlecat.cbb.exception;
 
+import com.littlecat.cbb.common.Consts;
+
 public class LittleCatException extends RuntimeException
 {
 	private static final long serialVersionUID = 1L;
-	private String errorCode;
+	private String errorCode = Consts.ERROR_CODE_UNKNOW;
 
 	public LittleCatException(String message)
 	{
